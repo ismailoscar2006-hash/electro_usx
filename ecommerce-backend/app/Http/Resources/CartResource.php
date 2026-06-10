@@ -10,7 +10,11 @@ class CartResource extends JsonResource
     public function toArray(Request $request): array
     {
         $items = $this->whenLoaded('items');
-        $total = $items ? $items->sum(fn($item) => $item->product->price * $item->quantity) : 0;
+        $total = 0;
+
+        if ($items) {
+            $total = $items->sum(fn($item) => ($item->product?->price ?? 0) * $item->quantity);
+        }
 
         return [
             'id' => $this->id,

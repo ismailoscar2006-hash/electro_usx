@@ -9,11 +9,19 @@ class CartItemPolicy
 {
     public function update(User $user, CartItem $cartItem): bool
     {
-        return $user->id === $cartItem->cart->user_id;
+        $cart = $cartItem->cart;
+        if (!$cart) {
+            return false;
+        }
+        return $user->id === $cart->user_id;
     }
 
     public function delete(User $user, CartItem $cartItem): bool
     {
-        return $user->id === $cartItem->cart->user_id;
+        $cart = $cartItem->cart;
+        if (!$cart) {
+            return false;
+        }
+        return $user->id === $cart->user_id;
     }
 }

@@ -34,6 +34,8 @@ export default function CartPage() {
   const { cart, loading, fetchCart, updateQuantity, removeItem, clearCart, getCartTotal } = useCart()
   const [updating, setUpdating] = useState({})
   const [removing, setRemoving] = useState({})
+  const [error, setError] = useState(null)
+  const [success, setSuccess] = useState(null)
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -43,14 +45,28 @@ export default function CartPage() {
 
   const handleUpdateQuantity = async (itemId, newQuantity) => {
     if (newQuantity < 1) return
+    setError(null)
     setUpdating((prev) => ({ ...prev, [itemId]: true }))
-    await updateQuantity(itemId, newQuantity)
+    const result = await updateQuantity(itemId, newQuantity)
+    if (!result.success) {
+      setError(result.message)
+    } else {
+      setSuccess('Quantité mise à jour')
+      setTimeout(() => setSuccess(null), 2000)
+    }
     setUpdating((prev) => ({ ...prev, [itemId]: false }))
   }
 
   const handleRemoveItem = async (itemId) => {
+    setError(null)
     setRemoving((prev) => ({ ...prev, [itemId]: true }))
-    await removeItem(itemId)
+    const result = await removeItem(itemId)
+    if (!result.success) {
+      setError(result.message)
+    } else {
+      setSuccess('Article supprimé du panier')
+      setTimeout(() => setSuccess(null), 2000)
+    }
     setRemoving((prev) => ({ ...prev, [itemId]: false }))
   }
 
@@ -115,6 +131,17 @@ export default function CartPage() {
     <MainLayout>
       <Box sx={{ py: { xs: 4, md: 6 } }}>
         <Container maxWidth="lg">
+          {error && (
+            <Alert severity="error" sx={{ mb: 2 }} onClose={() => setError(null)}>
+              {error}
+            </Alert>
+          )}
+          {success && (
+            <Alert severity="success" sx={{ mb: 2 }} onClose={() => setSuccess(null)}>
+              {success}
+            </Alert>
+          )}
+
           <Box sx={{ mb: 4 }}>
             <Typography
               variant="h3"

@@ -69,7 +69,9 @@ export const CartProvider = ({ children }) => {
       setCart(response.data)
       return { success: true }
     } catch (error) {
-      return { success: false, message: 'Failed to remove item' }
+      const message = error.response?.data?.message || error.message || 'Failed to remove item'
+      console.error('RemoveItem error:', { itemId, error })
+      return { success: false, message }
     }
   }
 
