@@ -11,10 +11,13 @@ export const productService = {
     return response.data
   },
 
+
+  // Jib produit wahed men API b id dyalo
   getProductById: async (id) => {
     const response = await api.get(`/products/${id}`)
     return response.data
   },
+
 
   createProduct: async (data) => {
     const response = await api.post('/products', data)

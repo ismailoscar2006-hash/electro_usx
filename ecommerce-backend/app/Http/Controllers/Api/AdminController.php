@@ -14,12 +14,15 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+
+// Jib ga3 les utilisateurs clients
     public function getAllUsers(Request $request): JsonResponse
     {
         $users = User::where('role', 'client')->paginate(15);
 
         return response()->json([
             'message' => 'Users retrieved successfully',
+            // Transformation des utilisateurs avant envoi au Frontend
             'data' => UserResource::collection($users),
             'meta' => [
                 'current_page' => $users->currentPage(),
@@ -30,16 +33,15 @@ class AdminController extends Controller
         ]);
     }
 
+
+    //Katjib ga3 les commandes ou t9der tfilterihom b statut (Pending, Delivered...).
     public function getAllOrders(Request $request): JsonResponse
     {
         $query = Order::with('items.product', 'user');
-
         if ($request->has('status')) {
             $query->where('status', $request->status);
         }
-
         $orders = $query->paginate(15);
-
         return response()->json([
             'message' => 'Orders retrieved successfully',
             'data' => OrderResource::collection($orders),
@@ -52,16 +54,20 @@ class AdminController extends Controller
         ]);
     }
 
+
+//Katbdel statut dyal commande (Pending, Shipped, Delivered...).
     public function updateOrderStatus(UpdateOrderStatusRequest $request, Order $order): JsonResponse
     {
         $order->update(['status' => $request->status]);
 
         return response()->json([
             'message' => 'Order status updated successfully',
-            'data' => new OrderResource($order->load('items.product')),
+            'data' => new OrderResource($order->load('items.product')),// fesh status kitbdel kn3awdo njino les donnes dyal produit
         ]);
     }
 
+
+    //Katjib état stock dyal produits ou wach kayn f stock wla la.
     public function getStockStatus(Request $request): JsonResponse
     {
         $products = Product::select('id', 'name', 'stock', 'category_id')

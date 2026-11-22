@@ -1,6 +1,14 @@
 import { Component } from 'react'
 import { Box, Typography, Button } from '@mui/material'
 
+
+/**
+ * ErrorBoundary Component
+ *
+ * Kaycatchi les erreurs li katw9a3 f React Components.
+ * Ila wa7ed component t7sser, mayti7ch site kamel.
+ * Kayaffichi message d'erreur ou bouton bach recharger page.
+ */
 export default class ErrorBoundary extends Component {
   constructor(props) {
     super(props)

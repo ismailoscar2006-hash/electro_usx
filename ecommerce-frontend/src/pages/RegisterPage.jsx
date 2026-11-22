@@ -81,7 +81,7 @@ export default function RegisterPage() {
                 mb: 3,
               }}
             >
-              Join TechStore and start shopping
+              Join ELECTRO_USX and start shopping
             </Typography>
 
             {error && (

@@ -50,6 +50,7 @@ class ProductController extends Controller
         ], 201);
     }
 
+    /** Afficher les détails d'un produit avec sa catégorie */
     public function show(Product $product): JsonResponse
     {
         return response()->json([

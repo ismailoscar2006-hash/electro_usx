@@ -1,6 +1,10 @@
 import { Box, Typography, Button } from '@mui/material'
 import { ShoppingCart } from '@mui/icons-material'
 
+// Had component kayt3ared ila makanch data.
+// Momkin yban f panier vide, commandes vide, produits vide...
+// Kayaffichi icon, title, message, ou button optionnel.
+
 export default function EmptyState({ icon = <ShoppingCart />, title, message, actionLabel, onAction }) {
   return (
     <Box sx={{ textAlign: 'center', py: 8 }}>

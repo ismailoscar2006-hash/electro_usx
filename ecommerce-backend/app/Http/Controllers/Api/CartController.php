@@ -12,6 +12,9 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
+
+
+/**Jib panier dyal utilisateur connecté mea les produits li fih*/
     public function show(Request $request): JsonResponse
     {
         try {
@@ -38,6 +41,8 @@ class CartController extends Controller
         }
     }
 
+
+    /** Ajout produit ou augmentation quantité f panier*/
     public function addItem(AddToCartRequest $request): JsonResponse
     {
         try {
@@ -78,6 +83,8 @@ class CartController extends Controller
         }
     }
 
+
+    // Modification quantité produit f panier
     public function updateItem(UpdateCartItemRequest $request, CartItem $cartItem): JsonResponse
     {
         try {
@@ -109,6 +116,8 @@ class CartController extends Controller
         }
     }
 
+
+    // Suppression produit men panier
     public function removeItem(CartItem $cartItem, Request $request): JsonResponse
     {
         try {
@@ -148,6 +157,8 @@ class CartController extends Controller
         }
     }
 
+
+    // Suppression ga3 produits men panier
     public function clear(Request $request): JsonResponse
     {
         try {

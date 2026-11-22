@@ -156,7 +156,7 @@ export default function CheckoutPage() {
                 />
 
                 <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 600 }}>
-                  Delivery Address *
+                  Delivery Address * And Number Phone
                 </Typography>
                 <TextField
                   fullWidth

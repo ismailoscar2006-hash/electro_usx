@@ -45,12 +45,17 @@ export default function Navbar() {
   const [searchFocused, setSearchFocused] = useState(false)
   const cartCount = getCartItemsCount()
 
+
+
+  // Kayra9eb scroll dyal page bach ybdel style dyal navbar
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 8)
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+
+  // Recherche produit ou navigation l page produits
   const handleSearch = (e) => {
     e.preventDefault()
     if (searchQuery.trim()) {
@@ -59,23 +64,27 @@ export default function Navbar() {
     }
   }
 
+
+  // Déconnexion utilisateur ou retour l page login
   const handleLogout = () => {
     logout()
     setUserMenuAnchor(null)
     navigate('/login')
   }
 
+
+  // Liens principaux dyal navbar
   const navItems = [
     { label: T.NAV.HOME, path: '/' },
     { label: T.NAV.PRODUCTS, path: '/products' },
   ]
-
+// Check ila route actuelle hya nafss route dyal menu
   const isActive = (path) => {
     if (path === '/') return location.pathname === '/'
     return location.pathname + location.search === path || location.pathname === path.split('?')[0]
   }
 
-  const userInitial = user?.name?.charAt(0)?.toUpperCase() || 'U'
+  const userInitial = user?.name?.charAt(0)?.toUpperCase() || 'U' //katjub awel lettre de user
 
   return (
     <>

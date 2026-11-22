@@ -1,6 +1,8 @@
 import { Button, CircularProgress } from '@mui/material'
 import { motion } from 'framer-motion'
 
+
+// Premium button kay supporti loading animation ou hover effects
 export default function PremiumButton({ loading, children, ...props }) {
   return (
     <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>

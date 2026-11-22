@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+
+//// Inscription nouvel utilisateur
     public function register(RegisterRequest $request): JsonResponse
     {
         $user = User::create([
@@ -37,6 +39,8 @@ class AuthController extends Controller
         ], 201);
     }
 
+
+// Connexion utilisateur ou génération token
     public function login(LoginRequest $request): JsonResponse
     {
         $user = User::where('email', $request->email)->first();
@@ -54,6 +58,8 @@ class AuthController extends Controller
         ]);
     }
 
+
+// Déconnexion utilisateur
     public function logout(Request $request): JsonResponse
     {
         $request->user()->currentAccessToken()->delete();
@@ -61,6 +67,7 @@ class AuthController extends Controller
         return response()->json(['message' => 'Logout successful']);
     }
 
+    // Affichage profil utilisateur connecté
     public function profile(Request $request): JsonResponse
     {
         return response()->json([
@@ -69,6 +76,8 @@ class AuthController extends Controller
         ]);
     }
 
+
+    // Mise à jour informations profil utilisateur
     public function updateProfile(UpdateProfileRequest $request): JsonResponse
     {
         $user = $request->user();

@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+
+//Had fichier kaymatal passerelle bin React ou Laravel API. Kaydir configuration axios, kayzid Bearer Token ou CSRF Token automatiquement, ou kaydir gestion erreurs authentification bach user irja3 l login ila token ma9adch.
 const API_BASE_URL = 'http://127.0.0.1:8000/api'
 
 const getCookie = (name) => {
@@ -17,16 +19,10 @@ const getCookie = (name) => {
   return cookieValue
 }
 
-const api = axios.create({
-  baseURL: API_BASE_URL,
-  headers: {
-    'Content-Type': 'application/json',
-  },
-})
+const api = axios.create({ baseURL: API_BASE_URL, headers: {'Content-Type': 'application/json',},})
 
 // Initialize CSRF token - Django sends it automatically
-export const initCSRFToken = async () => {
-  // No action needed - Django handles CSRF via cookies automatically
+export const initCSRFToken = async () => {// No action needed - Django handles CSRF via cookies automatically
 }
 
 // Add Bearer token and CSRF token to all requests

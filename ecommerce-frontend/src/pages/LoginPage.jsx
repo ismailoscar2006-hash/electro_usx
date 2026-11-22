@@ -71,7 +71,7 @@ export default function LoginPage() {
                 mb: 3,
               }}
             >
-              Sign in to your TechStore account
+              Sign in to your ELECTRO_USX account
             </Typography>
 
             {error && (
@@ -123,7 +123,7 @@ export default function LoginPage() {
               </Typography>
             </Box>
 
-            <Box sx={{ mt: 3, p: 2, backgroundColor: '#f0f0f0', borderRadius: 1 }}>
+            {/* <Box sx={{ mt: 3, p: 2, backgroundColor: '#f0f0f0', borderRadius: 1 }}>
               <Typography variant="caption" sx={{ color: 'text.secondary' }}>
                 <strong>Demo Credentials:</strong>
                 <br />
@@ -131,7 +131,7 @@ export default function LoginPage() {
                 <br />
                 Password: password
               </Typography>
-            </Box>
+            </Box> */}
           </Paper>
         </Container>
       </Box>

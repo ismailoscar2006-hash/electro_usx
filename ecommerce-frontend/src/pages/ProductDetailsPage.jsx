@@ -1,16 +1,6 @@
 ﻿import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import {
-  Container,
-  Grid,
-  Box,
-  Typography,
-  Button,
-  Card,
-  TextField,
-  Chip,
-  Alert,
-} from '@mui/material'
+import { Container, Grid, Box, Typography, Button, Card, TextField, Chip, Alert,} from '@mui/material'
 import { Add, Remove, ArrowBack, ShoppingCart } from '@mui/icons-material'
 import MainLayout from '../layouts/MainLayout'
 import LoadingSpinner from '../components/Loading'
@@ -83,34 +73,13 @@ export default function ProductDetailsPage() {
   return (
     <MainLayout>
       <Container maxWidth="lg" sx={{ py: 4 }}>
-        <Button
-          startIcon={<ArrowBack />}
-          onClick={() => navigate('/products')}
-          sx={{ mb: 3 }}
-        >
-          Back to Products
-        </Button>
+        <Button startIcon={<ArrowBack />}   onClick={() => navigate('/products')}   sx={{ mb: 3 }} >  Back to Products </Button>
 
         <Grid container spacing={4}>
           {/* Product Image */}
           <Grid item xs={12} md={6}>
-            <Card
-              sx={{
-                borderRadius: '20px',
-                overflow: 'hidden',
-                border: '1px solid rgba(15, 76, 255, 0.08)',
-                boxShadow: '0 8px 32px rgba(15, 23, 42, 0.08)',
-              }}
-            >
-              <ProductImage
-                product={product}
-                alt={product.name}
-                height={420}
-                hoverZoom={false}
-                borderRadius="20px"
-                objectFit="contain"
-                sx={{ backgroundColor: '#F8FAFC' }}
-              />
+            <Card sx={{ borderRadius: '20px',  overflow: 'hidden',  border: '1px solid rgba(15, 76, 255, 0.08)',  boxShadow: '0 8px 32px rgba(15, 23, 42, 0.08)',}} >
+              <ProductImage  product={product} alt={product.name} height={420} hoverZoom={false}  borderRadius="20px"  objectFit="contain"   sx={{ backgroundColor: '#F8FAFC' }}/>
             </Card>
           </Grid>
 

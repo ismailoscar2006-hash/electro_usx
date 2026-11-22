@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
+
+// Affichage commandes dyal utilisateur connecté
     public function myOrders(Request $request): JsonResponse
     {
         $orders = $request->user()->orders()->with('items.product')->paginate(15);
@@ -28,7 +30,7 @@ class OrderController extends Controller
             ],
         ]);
     }
-
+/// affichger la commande li jaya par id 
     public function show(Order $order, Request $request): JsonResponse
     {
         $this->authorize('view', $order);
@@ -38,7 +40,7 @@ class OrderController extends Controller
             'data' => new OrderResource($order->load('items.product')),
         ]);
     }
-
+///Katjib panier dyal user, kat7seb total, katsayb commande, katzid les produits f OrderItems, katna9es stock, katferagh panier ou katrje3 commande jdida l frontend.
     public function place(PlaceOrderRequest $request): JsonResponse
     {
         return DB::transaction(function () use ($request) {

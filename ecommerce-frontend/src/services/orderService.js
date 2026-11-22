@@ -12,6 +12,7 @@ export const orderService = {
     return response.data
   },
 
+  
   placeOrder: async (deliveryAddress) => {
     const response = await api.post('/orders', { delivery_address: deliveryAddress })
     return response.data
